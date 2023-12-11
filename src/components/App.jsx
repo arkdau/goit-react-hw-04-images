@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import css from "./styles.css";
+// import css from "./styles.css";
 import fetchGetAllItems from "./services/PixabayAPI";
 import SearchBar from "./SearchBar/SearchBar";
 import Images from "./ImageGallery/Images";
