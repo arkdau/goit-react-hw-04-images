@@ -28,7 +28,7 @@ export const App = () => {
   const [imageSelect, setImageSelect] = useState("");
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
-  const [totalHits, setTotalHits] = useState(0);
+  // const [totalHits, setTotalHits] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [show, setShow] = useState(false);
 
@@ -53,9 +53,9 @@ export const App = () => {
     return pageTemp;
   }
   //
-  function getTotalPage() {
-    return setTotalPage(totalHits);
-  }
+  // function getTotalPage() {
+  //   return setTotalPage(totalHits);
+  // }
   // getPage() {
   //   return this.state.page;
   // }
@@ -118,7 +118,7 @@ export const App = () => {
       }
       let maxPages = setTotalPage(upImages.totalHits);
       setImages(imageSum);
-      setTotalHits(upImages.totalHits);
+      // setTotalHits(upImages.totalHits);
       setTotalPages(maxPages);
 
       // this.setState({
