@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import css from "./styles.css";
 import fetchGetAllItems from "./services/PixabayAPI";
 import SearchBar from "./SearchBar/SearchBar";
@@ -63,11 +63,12 @@ export const App = () => {
 
   useEffect(() => {
     fetchData(DEFAULT_QUERY, 1);
-    // console.log('Mouting fase');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     fetchData(query, page);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, page]);
 
   // componentDidMount() {
