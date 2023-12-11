@@ -47,15 +47,15 @@ export const App = () => {
 
     setPage(pageTemp);
 
-    // this.setState({
+    // t his.setState({
     //   page: pageTemp,
     // });
     return pageTemp;
   }
   //
-  // getTotalPage() {
-  //   return this.setTotalPage(this.state.totalHits);
-  // }
+  function getTotalPage() {
+    return setTotalPage(totalHits);
+  }
   // getPage() {
   //   return this.state.page;
   // }
