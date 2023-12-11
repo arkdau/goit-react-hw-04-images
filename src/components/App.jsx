@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-// import css from "./styles.css";
+import css from "./styles.css";
 import fetchGetAllItems from "./services/PixabayAPI";
 import SearchBar from "./SearchBar/SearchBar";
 import Images from "./ImageGallery/Images";
 import Loader from "./Loader/Loader";
 import Button from "./Button/Button";
-// import Modal from "./Modal/Modal";
+import Modal from "./Modal/Modal";
 
 const DEFAULT_QUERY = "";
 
@@ -30,6 +30,7 @@ export const App = () => {
   const [query, setQuery] = useState("");
   const [totalHits, setTotalHits] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const [show, setShow] = useState(false);
 
   function setTotalPage(totalHits) {
     const totalPage = Math.ceil(totalHits / 12);
@@ -66,7 +67,7 @@ export const App = () => {
   }, []);
 
   useEffect(() => {
-      fetchData(query, page);
+    fetchData(query, page);
   }, [query, page]);
 
   // componentDidMount() {
@@ -140,14 +141,17 @@ export const App = () => {
     }
   }
   //
-  // showModal = () => {
-  //   this.setState({ sho w: true });
-  // };
-  //
-  // hideModal = () => {
-  //   this.setState({ show: false });
-  // };
-  //
+  const showModal = () => {
+    setShow(true);
+
+    // this.setState({ show: true });
+  };
+
+  const hideModal = () => {
+    setShow(false);
+    // this.setState({ show: false });
+  };
+
   const selectImage = (src) => {
     setImageSelect(src);
 
@@ -156,15 +160,15 @@ export const App = () => {
     // });
   };
   //
-  // // Close modal window
-  // escspePress(e) {
-  //   e.preventDefault();
-  //   if (e.key === "Escape") {
-  //     this.hideModal();
-  //     this.selectImage("");
-  //   }
-  // }
-  //
+  // Close modal window
+  function escspePress(e) {
+    e.preventDefault();
+    if (e.key === "Escape") {
+      hideModal();
+      selectImage("");
+    }
+  }
+
   function Submit(q, page) {
     // this.fetchData();
     // this.setState({
@@ -180,28 +184,27 @@ export const App = () => {
       <SearchBar onSubmit={Submit} />
       {isLoading && <Loader />}
       {errorMsg && <div className="error">{errorMsg}</div>}
-      {
-        /*<Modal
-    show={this.state.show}
-    handleClose={this.hideModal}
-    escape={this.escspePress}
-  >
-    <div className={css.Overlay}>
-      <div className={css.Modal}>
-        <img
-          src={this.state.imageSelect}
-          alt=""
-        />
-      </div>
-    </div>
-  </Modal>*/
-      }
+
+      <Modal
+        show={show}
+        handleClose={hideModal}
+        escape={escspePress}
+      >
+        <div className={css.Overlay}>
+          <div className={css.Modal}>
+            <img
+              src={imageSelect}
+              alt=""
+            />
+          </div>
+        </div>
+      </Modal>
 
       {!errorMsg && (
         <Images
           data={images}
           selectImage={selectImage}
-          // showModal={this.showModal}
+          showModal={showModal}
         />
       )}
 

@@ -14,8 +14,8 @@ function ImageGallery(props) {
     // console.log('largeImageURL: ', largeImageURL);
 
     if (elem.tagName === "IMG") {
-      this.props.selectImage(largeImageURL);
-      this.props.showModal();
+      props.selectImage(largeImageURL);
+      props.showModal();
     }
   };
 
