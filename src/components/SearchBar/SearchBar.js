@@ -3,12 +3,6 @@ import PropTypes from "prop-types";
 import css from "./SearchBar.module.css";
 
 function SearchBar(props) {
-  // function handleKeyUp(event) {
-  //   if (event.code === "Enter") {
-  //     props.onSubmit(event.target.value);
-  //   }
-  // }
-
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const form = evt.currentTarget;
